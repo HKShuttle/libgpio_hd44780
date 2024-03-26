@@ -1,6 +1,6 @@
-PROJ=./.bin/lcd_helloworld
+PROJ=./.bin/lib44780_test
 CC=cc
-SRC=lcd_helloworld.c
+SRC=test.c
 LIBS=-lgpiod
 
 all:
