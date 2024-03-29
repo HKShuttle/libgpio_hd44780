@@ -55,7 +55,6 @@ struct Lcd
 `void sendByte(struct Lcd *lcd, int rs, int byte);`
 
 キャラクタ表示デバイスに対して、8ビットのデータとrs（レジスタ選択）信号を送信します。
-この関数は、 `sendNibble()` 関数を2回繰り返して実装しています。
 
 `void sendCommand(struct Lcd *lcd, int byte);`
 
@@ -71,8 +70,8 @@ struct Lcd
 
 `void gotoLine(struct Lcd *lcd, int nextLine);`
 
-キャラクタ表示デバイスのカーソルを、 `nextLine` 行目の先頭に移動させます。0行目が先頭の行になります。
-現在、2行のデバイスにのみ対応しています。
+キャラクタ表示デバイスのカーソルを、 `nextLine` 行目の先頭に移動させます。0行目が先頭の行に対応します。
+現在、2行までのデバイスに対応しています。
 
 `void printLcd(struct Lcd *lcd, char *text);`
 
