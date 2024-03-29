@@ -1,3 +1,7 @@
+#include <gpiod.h>
+#include <stdio.h>
+#include <unistd.h>
+
 #ifndef APP
 #define APP "libgpio_hd44780"
 #endif

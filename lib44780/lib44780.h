@@ -1,10 +1,6 @@
 #ifndef LIB44780_H
 #define LIB44780_H
 
-#include <gpiod.h>
-#include <stdio.h>
-#include <unistd.h>
-
 struct Lcd
 {
 	struct gpiod_line *rs;
