@@ -107,21 +107,24 @@ void clearLcd(struct Lcd *lcd)
 	usleep(164 * 2 * 10);
 }
 
-void gotoLine(struct Lcd *lcd, int nextLine)
+void setCursor(struct Lcd *lcd, int nextLine, int column)
 {
 	const int SET_LINE = 0b10000000;
 	switch (nextLine)
 	{
 	case 0:
-		sendCommand(lcd, SET_LINE | 0);
-		return;
+		sendCommand(lcd, SET_LINE | column);
 	case 1:
-		sendCommand(lcd, SET_LINE | 0x40);
-		return;
+		sendCommand(lcd, SET_LINE | 0x40 | column);
 	default:
 		return;
 		// todo: implement case2, case3
 	}
+}
+
+void gotoLine(struct Lcd *lcd, int nextLine)
+{
+	setCursor(lcd, nextLine, 0);
 }
 
 void printLcd(struct Lcd *lcd, char *text)

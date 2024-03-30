@@ -29,6 +29,8 @@ void sendData(struct Lcd *lcd, int byte);
 
 void clearLcd(struct Lcd *lcd);
 
+void setCursor(struct Lcd *lcd, int nextLine, int column);
+
 void gotoLine(struct Lcd *lcd, int nextLine);
 
 void printLcd(struct Lcd *lcd, char *text);
