@@ -34,11 +34,11 @@ int main(int argc, char **argv)
         sprintf(pad, "    ");
     }
     printLcd(&lcd, pad);
-    strftime(hour, sizeof(hour), "%H", &local);
+    strftime(hour, sizeof(hour), "%-H", &local);
     printLcd(&lcd, hour);
     strftime(minute, sizeof(minute), ":%M", &local);
     printLcd(&lcd, minute);
-    strftime(second, sizeof(second), "%S", &local);
+    strftime(second, sizeof(second), ":%S", &local);
     printLcd(&lcd, second);
 
     while (1)
@@ -55,8 +55,6 @@ int main(int argc, char **argv)
         if (hours != local.tm_hour)
         {
             hours = local.tm_hour;
-            strftime(date, sizeof(date), " %Y/%m/%d %a", &local);
-            printLcd(&lcd, date);
             gotoLine(&lcd, 1);
             if (hours < 10)
             {
@@ -67,10 +65,10 @@ int main(int argc, char **argv)
                 sprintf(pad, "    ");
             }
             printLcd(&lcd, pad);
-            strftime(hour, sizeof(hour), "%H", &local);
+            strftime(hour, sizeof(hour), "%-H", &local);
             printLcd(&lcd, hour);
         }
-        if (minutes = local.tm_min)
+        if (minutes != local.tm_min)
         {
             minutes = local.tm_min;
             setCursor(&lcd, 1, 6);
@@ -81,7 +79,7 @@ int main(int argc, char **argv)
         {
             seconds = local.tm_sec;
             setCursor(&lcd, 1, 9);
-            strftime(second, sizeof(second), "%S", &local);
+            strftime(second, sizeof(second), ":%S", &local);
             printLcd(&lcd, second);
         }
         usleep(100 * 1000);
