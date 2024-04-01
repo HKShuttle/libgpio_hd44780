@@ -48,9 +48,7 @@ int main(int argc, char **argv)
         if (yday != local.tm_yday)
         {
             yday = local.tm_yday;
-            // setCursor(&lcd, 0, 0); // Cursor is set not at (0,0) but at (1,0). Why it doesn't work? :(
-            sendByte(&lcd, 0, 0b10);
-            usleep(164 * 2 * 10);
+            setCursor(&lcd, 0, 0);
             strftime(date, sizeof(date), " %Y/%m/%d %a", &local);
             printLcd(&lcd, date);
         }
