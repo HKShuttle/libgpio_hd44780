@@ -114,8 +114,10 @@ void setCursor(struct Lcd *lcd, int nextLine, int column)
 	{
 	case 0:
 		sendCommand(lcd, SET_LINE | column);
+		return;
 	case 1:
 		sendCommand(lcd, SET_LINE | 0x40 | column);
+		return;
 	default:
 		return;
 		// todo: implement case2, case3
@@ -133,8 +135,7 @@ void printLcd(struct Lcd *lcd, char *text)
 	int line = 0;
 	while (1)
 	{
-		// avoid forever loop
-		if (*(text + i) == '\0' || i > 0xffff)
+		if (*(text + i) == '\0')
 		{
 			return;
 		}
